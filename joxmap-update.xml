@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+    <update>
+        <name>JoXmap</name>
+        <description>JoXmap - Sitemap Generator for Joomla!</description>
+        <element>pkg_joxmap</element>
+        <type>package</type>
+        <client>site</client>
+        <version>1.0.0</version>
+        <infourl title="JoXmap 1.0.0">http://github.com/JLTRY/JoXmap</infourl>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/JLTRY/JoXmap/releases/download/v1.0.1/joxmap-1.0.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>JLTRY</maintainer>
+        <maintainerurl>http://www.jltryoen.fr</maintainerurl>
+        <targetplatform name="joomla" version="(4\.[01234]|5\.[0123])"/>
+    </update>
+</updates>

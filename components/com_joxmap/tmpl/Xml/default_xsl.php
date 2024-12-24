@@ -1,13 +1,21 @@
 <?php
 /**
- * @version             $Id$
- * @copyright           Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license             GNU General Public License version 2 or later; see LICENSE.txt
- * @author              Guillermo Vargas (guille@vargas.co.cr)
+ * @package     Joomla.Site
+ * @subpackage  com_joxmap
+ *
+ * @copyright   Copyright (C) 2024 JL Tryoen. All rights reserved.
+     (com_xmap) Copyright (C) 2007 - 2009 Joomla! Vargas. All rights reserved.
+ * @author      JL Tryoen /  Guillermo Vargas (guille@vargas.co.cr)
+ * @license     GNU General Public License version 3; see LICENSE
  */
 
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Language\Text;
+
 
 header('Content-Type: text/xml; charset="utf-8"');
 header('Content-Disposition: inline');
@@ -23,9 +31,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
 <xsl:template match="/">
 <html>
 <head>
-<title><?php echo JText::_('COM_XMAP_XML_FILE'); ?></title>
-<script src="<?php echo JUri::base(); ?>media/system/js/mootools-core.js" type="text/javascript"></script>
-<script src="<?php echo JUri::base(); ?>media/system/js/mootools-more.js" type="text/javascript"></script>
+<title><?php echo Text::_('COM_JOXMAP_XML_FILE'); ?></title>
+<script src="<?php echo Uri::base(); ?>media/system/js/mootools-core.js" type="text/javascript"></script>
+<script src="<?php echo Uri::base(); ?>media/system/js/mootools-more.js" type="text/javascript"></script>
 <style type="text/css">
     <![CDATA[
     <!--
@@ -48,14 +56,14 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
     }
     .sortup {
         background-position: right center;
-        background-image: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/sortup.gif);
+        background-image: url(<?php echo Uri::base(); ?>components/com_xmap/assets/images/sortup.gif);
         background-repeat: no-repeat;
         font-style:italic;
         white-space:pre;
     }
     .sortdown {
         background-position: right center;
-        background-image: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/sortdown.gif);
+        background-image: url(<?php echo Uri::base(); ?>components/com_xmap/assets/images/sortdown.gif);
         background-repeat: no-repeat;
         font-style:italic;
         white-space:pre;
@@ -105,7 +113,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
     }
     .editable {
         cursor:pointer;
-        background: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/arrow.gif) top right no-repeat;
+        background: url(<?php echo Uri::base(); ?>components/com_xmap/assets/images/arrow.gif) top right no-repeat;
         padding-right:18px;
         padding-right:18px;
         border:1px solid #ffffff;
@@ -134,13 +142,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
     #filter_options {border-radius: 5px; background-color:#fff;padding: 3px;}
     .toggle-excluded {
         width: 16px; height: 16px; display: inline-block; float: left; cursor: pointer;margin-right: 5px;
-        background: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/tick.png) no-repeat;
+        background: url(<?php echo Uri::base(); ?>components/com_xmap/assets/images/tick.png) no-repeat;
     }
     .excluded {
       text-decoration:line-through;
     }
     .excluded .toggle-excluded {
-        background: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/unpublished.png) no-repeat;
+        background: url(<?php echo Uri::base(); ?>components/com_xmap/assets/images/unpublished.png) no-repeat;
     }
     div.imagelist {
         border: 1px solid #ccc;
@@ -157,7 +165,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
         padding:2px;
         float: left;
     }
-<?php $doc = JFactory::getDocument(); if ($doc->direction == 'rtl') { ?>
+<?php $doc = Factory::getDocument(); if ($doc->direction == 'rtl') { ?>
     body {
         font-family: Tahoma;
     }
@@ -394,24 +402,24 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
 <div id="header">
     <div id="title">
         <h1 id="head1"><?php echo $this->item->title; ?></h1>
-        <span class="number_urls"><?php echo JText::_('COM_XMAP_NUMBER_OF_URLS'); ?>: <xsl:value-of select="count(xna:urlset/xna:url)"></xsl:value-of></span>
+        <span class="number_urls"><?php echo Text::_('COM_JOXMAP_NUMBER_OF_URLS'); ?>: <xsl:value-of select="count(xna:urlset/xna:url)"></xsl:value-of></span>
     </div>
     <div id="instructions">
         <div>
             <?php $sitemapUrl = 'index.php?option=com_xmap&view=xml&id='.$this->item->id; ?>
             <?php if (!$this->user->get('id')): ?>
-            <p><?php echo JText::sprintf('COM_XMAP_LOGIN_AS_ADMIN_EDIT_SITEMAP', JRoute::_('index.php?option=com_users&view=login&return='.base64_encode($sitemapUrl))); ?></p>
+            <p><?php echo Text::sprintf('COM_JOXMAP_LOGIN_AS_ADMIN_EDIT_SITEMAP', JRoute::_('index.php?option=com_users&view=login&return='.base64_encode($sitemapUrl))); ?></p>
             <?php else: ?>
-            <?php $sitemapUrl = JUri::base(true).'/'.str_replace('&','&amp;',$sitemapUrl); ?>
-            <p><?php echo JText::_('COM_XMAP_XML_SITEMAP_HELP'); ?></p>
-            <p dir="ltr"><b><?php echo JText::_('COM_XMAP_XML_SITEMAP_URL'); ?></b>: <?php echo $sitemapUrl; ?></p>
+            <?php $sitemapUrl = Uri::base(true).'/'.str_replace('&','&amp;',$sitemapUrl); ?>
+            <p><?php echo Text::_('COM_JOXMAP_XML_SITEMAP_HELP'); ?></p>
+            <p dir="ltr"><b><?php echo Text::_('COM_JOXMAP_XML_SITEMAP_URL'); ?></b>: <?php echo $sitemapUrl; ?></p>
             <div id="filter_options">
                 <form method="get" action="<?php echo JRoute::_('index.php?option=com_xmap&view=xml'); ?>">
                     <input type="hidden" name="option" value="com_xmap" />
                     <input type="hidden" name="view" value="xml" />
                     <input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
-                    <label><input onClick="this.form.submit();"<?php echo ($showTitle? ' checked="checked"':''); ?> type="checkbox" value="1" name="filter_showtitle" /><?php echo JText::_('COM_XMAP_DISPLAY_TITLE'); ?></label>
-                    <label><input onClick="this.form.submit();"<?php echo ($showExcluded? ' checked="checked"':''); ?> type="checkbox" value="1" name="filter_showexcluded" /><?php echo JText::_('COM_XMAP_DISPLAY_EXCLUDED_ITEMS'); ?></label>
+                    <label><input onClick="this.form.submit();"<?php echo ($showTitle? ' checked="checked"':''); ?> type="checkbox" value="1" name="filter_showtitle" /><?php echo Text::_('COM_JOXMAP_DISPLAY_TITLE'); ?></label>
+                    <label><input onClick="this.form.submit();"<?php echo ($showExcluded? ' checked="checked"':''); ?> type="checkbox" value="1" name="filter_showexcluded" /><?php echo Text::_('COM_JOXMAP_DISPLAY_EXCLUDED_ITEMS'); ?></label>
                 </form>
             </div>
             <?php endif; ?>
@@ -421,11 +429,11 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
 </div>
 <table id="table0" class="data">
     <tr class="header">
-        <td><?php echo ($showTitle? JText::_('COM_XMAP_TITLE').' / ' : ''); ?><?php echo JText::_('COM_XMAP_URL'); ?></td>
+        <td><?php echo ($showTitle? Text::_('COM_JOXMAP_TITLE').' / ' : ''); ?><?php echo Text::_('COM_JOXMAP_URL'); ?></td>
         <?php if (!$this->isImages): ?>
-        <td><?php echo JText::_('COM_XMAP_LASTMOD'); ?></td>
-        <td><?php echo JText::_('COM_XMAP_CHANGEFREQ'); ?></td>
-        <td><?php echo JText::_('COM_XMAP_PRIORITY'); ?></td>
+        <td><?php echo Text::_('COM_JOXMAP_LASTMOD'); ?></td>
+        <td><?php echo Text::_('COM_JOXMAP_CHANGEFREQ'); ?></td>
+        <td><?php echo Text::_('COM_JOXMAP_PRIORITY'); ?></td>
         <?php endif ?>
     </tr>
     <xsl:for-each select="xna:urlset/xna:url">

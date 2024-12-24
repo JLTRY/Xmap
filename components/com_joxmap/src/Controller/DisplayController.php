@@ -1,10 +1,12 @@
 <?php
-
 /**
- * @version        $Id$
- * @copyright      Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license        GNU General Public License version 2 or later; see LICENSE.txt
- * @author         Guillermo Vargas (guille@vargas.co.cr)
+ * @package     Joomla.Site
+ * @subpackage  com_joxmap
+ *
+ * @copyright   Copyright (C) 2024 JL Tryoen. All rights reserved.
+     (com_xmap) Copyright (C) 2007 - 2009 Joomla! Vargas. All rights reserved.
+ * @author      JL Tryoen /  Guillermo Vargas (guille@vargas.co.cr)
+ * @license     GNU General Public License version 3; see LICENSE
  */
 
 namespace JLTRY\Component\JoXmap\Site\Controller;
@@ -12,8 +14,10 @@ namespace JLTRY\Component\JoXmap\Site\Controller;
 // No direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-use Joomla\CMS\MVC\Controller\BaseController as JControllerLegacy;
-use Joomla\CMS\Factory as JFactory;
+
+use JLTRY\Component\JoXmap\Site\Helper\XmapHelper;
+use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Factory;
 /**
  * Xmap Component Controller
  *
@@ -21,7 +25,7 @@ use Joomla\CMS\Factory as JFactory;
  * @subpackage     com_xmap
  * @since          2.0
  */
-class XmapController extends JControllerLegacy
+class DisplayController extends BaseController
 {
 
     /**
@@ -41,14 +45,14 @@ class XmapController extends JControllerLegacy
         $viewName   = XmapHelper::getCmd('view');
         $viewLayout = XmapHelper::getCmd('layout', 'default');
 
-        $user = JFactory::getUser();
+        $user = Factory::getUser();
 
         if ($user->get('id') || !in_array($viewName, array('html', 'xml')) || $viewLayout == 'xsl') {
             $cachable = false;
         }
 
         if ($viewName) {
-            $document = JFactory::getDocument();
+            $document = Factory::getDocument();
             $viewType = $document->getType();
             $view = $this->getView($viewName, $viewType, '', array('base_path' => $this->basePath, 'layout' => $viewLayout));
             $sitemapmodel = $this->getModel('Sitemap');

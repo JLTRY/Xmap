@@ -1,9 +1,12 @@
 <?php
 /**
- * @version         $Id$
- * @copyright       Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license         GNU General Public License version 2 or later; see LICENSE.txt
- * @author          Guillermo Vargas (guille@vargas.co.cr)
+ * @package     Joomla.Site
+ * @subpackage  com_joxmap
+ *
+ * @copyright   Copyright (C) 2024 JL Tryoen. All rights reserved.
+     (com_xmap) Copyright (C) 2007 - 2009 Joomla! Vargas. All rights reserved.
+ * @author      JL Tryoen /  Guillermo Vargas (guille@vargas.co.cr)
+ * @license     GNU General Public License version 3; see LICENSE
  */
 
 // no direct access
@@ -15,7 +18,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 $params = $this->item->params;
 
 if ($this->displayer->canEdit) {
-    $live_site = JURI::root();
+    $live_site = Uri::root();
     JHTML::_('behavior.framework', true);
     $ajaxurl = "{$live_site}index.php?option=com_xmap&format=json&task=ajax.editElement&action=toggleElement&".JSession::getFormToken().'=1';
 
@@ -55,7 +58,7 @@ if ($this->displayer->canEdit) {
             }
         }";
 
-    $doc = JFactory::getDocument();
+    $doc = Factory::getDocument();
     $doc->addStyleDeclaration ($css);
     $doc->addScriptDeclaration ($js);
 }
@@ -96,7 +99,7 @@ if ($this->displayer->canEdit) {
     <?php echo $this->loadTemplate('items'); ?>
 
 <?php if ($params->get('include_link', 1) )  : ?>
-    <div class="muted" style="font-size:10px;width:100%;clear:both;text-align:center;">Powered by <a href="http://www.jooxmap.com/">Xmap</a></div>
+    <div class="muted" style="font-size:10px;width:100%;clear:both;text-align:center;">Powered by <a href="http://www.jooxmap.com/">JoXmap</a></div>
 <?php endif; ?>
 
     <span class="article_separator">&nbsp;</span>

@@ -1,9 +1,12 @@
 <?php
 /**
- * @version             $Id$
- * @copyright			Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license             GNU General Public License version 2 or later; see LICENSE.txt
- * @author              Guillermo Vargas (guille@vargas.co.cr)
+ * @package     Joomla.Site
+ * @subpackage  com_joxmap
+ *
+ * @copyright   Copyright (C) 2024 JL Tryoen. All rights reserved.
+     (com_xmap) Copyright (C) 2007 - 2009 Joomla! Vargas. All rights reserved.
+ * @author      JL Tryoen /  Guillermo Vargas (guille@vargas.co.cr)
+ * @license     GNU General Public License version 3; see LICENSE
  */
 
 // no direct access

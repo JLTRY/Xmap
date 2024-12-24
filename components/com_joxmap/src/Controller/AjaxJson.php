@@ -1,11 +1,15 @@
 <?php
 
 /**
- * @version     $Id$
- * @copyright   Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * @author      Guillermo Vargas (guille@vargas.co.cr)
+ * @package     Joomla.Site
+ * @subpackage  com_joxmap
+ *
+ * @copyright   Copyright (C) 2024 JL Tryoen. All rights reserved.
+     (com_xmap) Copyright (C) 2007 - 2009 Joomla! Vargas. All rights reserved.
+ * @author      JL Tryoen /  Guillermo Vargas (guille@vargas.co.cr)
+ * @license     GNU General Public License version 3; see LICENSE
  */
+
 // No direct access
 defined('_JEXEC') or die;
 
@@ -27,9 +31,9 @@ class XmapControllerAjax extends JControllerLegacy
 
         jimport('joomla.utilities.date');
         jimport('joomla.user.helper');
-        $user = JFactory::getUser();
-        $groups = array_keys(JUserHelper::getUserGroups($user->get('id')));
-        $result = new JRegistry('_default');
+        $user = Factory::getUser();
+        $groups = array_keys(UserHelper::getUserGroups($user->get('id')));
+        $result = new Registry('_default');
         $sitemapId = XmapHelper::getInt('id');
 
         if (!$user->authorise('core.edit', 'com_xmap.sitemap.'.$sitemapId)) {

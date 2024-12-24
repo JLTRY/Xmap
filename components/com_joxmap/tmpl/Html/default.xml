@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-    <layout title="COM_XMAP_SITEMAP_HTML_VIEW_DEFAULT_TITLE">
+    <layout title="COM_JOXMAP_SITEMAP_HTML_VIEW_DEFAULT_TITLE">
         <message>
-            <![CDATA[COM_XMAP_SITEMAP_HTML_VIEW_DEFAULT_DESC]]>
+            <![CDATA[COM_JOXMAP_SITEMAP_HTML_VIEW_DEFAULT_DESC]]>
         </message>
     </layout>
     <fields name="request">
         <fieldset name="request"
-            addfieldpath="/administrator/components/com_xmap/models/fields">
+            addfieldpath="/administrator/components/com_joxmap/src/Field">
             <field
                 name="id"
                 type="sql"
                 position="left"
-                label="COM_XMAP_SELECT_AN_SITEMAP"
-                description="COM_XMAP_SELECT_A_SITEMAP" 
-                query="SELECT title,id FROM #__xmap_sitemap" 
+                label="COM_JOXMAP_SELECT_AN_SITEMAP"
+                description="COM_JOXMAP_SELECT_A_SITEMAP" 
+                query="SELECT title,id FROM #__joxmap_sitemap" 
                 key_field="id" value_field="title"
             />
         </fieldset>
@@ -24,13 +24,13 @@
     <fields name="params">
         <!-- Basic options. -->
         <fieldset name="basic"
-            label="COM_XMAP_ATTRIBS_SITEMAP_SETTINGS_LABEL">
+            label="COM_JOXMAP_ATTRIBS_SITEMAP_SETTINGS_LABEL">
             <field
             name="include_css"
             type="list"
             default="0"
-            label="COM_XMAP_INCLUDE_CSS_LABEL"
-            description="COM_XMAP_INCLUDE_CSS_DESC">
+            label="COM_JOXMAP_INCLUDE_CSS_LABEL"
+            description="COM_JOXMAP_INCLUDE_CSS_DESC">
                 <option value="1">JYES</option>
                 <option value="0">JNO</option>
             </field>
