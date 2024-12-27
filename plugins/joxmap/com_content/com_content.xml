@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
-<extension type="plugin" group="xmap" version="1.6" method="upgrade">
+<extension type="plugin" group="joxmap" version="1.6" method="upgrade">
     <name>JoXmap - Content Plugin</name>
     <creationDate>2011-04-10</creationDate>
     <author>JL TRYOEN / (com_xmap) Guillermo Vargas</author>
